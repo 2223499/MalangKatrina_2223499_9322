@@ -1,8 +1,8 @@
 /**
  * MALANG, KATRINA ISABEL A.
- *
+ * <p>
  * Problem
- * Create a program that will lookup a variable number of hostnames/IP addresses:
+ * Create a program that will look up a variable number of hostnames/IP addresses:
  * • The program will ask the name of a host to search and then immediately display the hostnames
  * and IP addresses of the host given by the user
  * • The program will then ask the user if he/she wants to search for another host (if yes, repeat the
@@ -19,20 +19,26 @@ public class PreExercise1 {
 
     public static void main(String[] args) throws UnknownHostException
     {
+        // Creating a new Scanner object that will read from the standard input stream.
         Scanner kbd = new Scanner(System.in);
-        String input = ;
+        char repeat;
+        // Asking the user to input a hostname or IP address.
+        do {
+            System.out.print("Host - Type IP address/Hostname: ");
+            String hostname = kbd.nextLine();
 
-        InetAddress[] addressArr = InetAddress.getAllByName(inputvar);
-        System.out.println(
-                "Host 1 - Type IP address/Hostname: " + addressArr);
+            // Getting all the IP addresses of the hostname given by the user.
+            InetAddress[] addresses = InetAddress.getAllByName(hostname);
+            System.out.println("Number of Hosts/IPs: " + addresses.length);
+            System.out.println("Host name\tIP Address");
 
-        int num = addressArr.length;
-        System.out.println(
-                "Number of Hosts/IPs" + addressArr.length);
-        System.out.println(
-                "Host name IP Address");
-        for (InetAddress add: addressArr){
-            System.out.println(add.getHostAddress());
-        }
+            // A for-each loop that iterates through the array of InetAddress objects.
+            for (InetAddress address : addresses) {
+                System.out.println(address.getHostName() + "\t" + address.getHostAddress());
+            }
+            System.out.print("Search another [y/n]? ");
+            repeat = kbd.nextLine().charAt(0);
+        } while (repeat == 'y');
+        kbd.close();
     }
 }
