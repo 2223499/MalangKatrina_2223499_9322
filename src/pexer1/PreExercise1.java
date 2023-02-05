@@ -22,10 +22,13 @@ public class PreExercise1 {
         // Creating a new Scanner object that will read from the standard input stream.
         Scanner kbd = new Scanner(System.in);
         char repeat;
+        int host =1;
+
         // Asking the user to input a hostname or IP address.
         do {
-            System.out.print("Host - Type IP address/Hostname: ");
+            System.out.print("Host "  + host + "- Type IP address/Hostname: ");
             String hostname = kbd.nextLine();
+            host++;
 
             // Getting all the IP addresses of the hostname given by the user.
             InetAddress[] addresses = InetAddress.getAllByName(hostname);
@@ -36,7 +39,9 @@ public class PreExercise1 {
             for (InetAddress address : addresses) {
                 System.out.println(address.getHostName() + "\t" + address.getHostAddress());
             }
+            // Asking the user if he/she wants to search for another host.
             System.out.print("Search another [y/n]? ");
+            // Getting the first character of the string returned by `kbd.nextLine()`.
             repeat = kbd.nextLine().charAt(0);
         } while (repeat == 'y');
         kbd.close();
