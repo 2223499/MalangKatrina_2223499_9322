@@ -26,7 +26,7 @@ public class PreExercise1 {
 
         // Asking the user to input a hostname or IP address.
         do {
-            System.out.print("Host "  + host + "- Type IP address/Hostname: ");
+            System.out.print("Host "  + host + " - Type IP address/Hostname: ");
             String hostname = kbd.nextLine();
             host++;
 
